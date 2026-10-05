@@ -20,7 +20,8 @@ export default function TransactionModal({ isOpen, onClose, onTransactionAdded }
     setErrorMessage(null);
 
     try {
-      const response = await fetch('http://localhost:5000/api/financial-ledger', {
+      
+      const response = await fetch('https://onrender.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...formData, recorded_by_user_id: 1 }) // Defaults to Admin account audit key

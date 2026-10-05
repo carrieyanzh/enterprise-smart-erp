@@ -22,7 +22,8 @@ export default function DashboardOverview({ onNavigateToProducts = () => {} }) {
   // 2. Fetch function marked properly with the "async" keyword
   const fetchDashboardTelemetry = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/dashboard/metrics');
+      //const response = await fetch('http://localhost:5000/api/dashboard/metrics');
+      const response = await fetch('https://onrender.com');
       if (!response.ok) {
         throw new Error(`Server connection failed: Status ${response.status}`);
       }
