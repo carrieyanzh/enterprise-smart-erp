@@ -1,0 +1,18 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# 忽略所有本地 SQLite 数据库文件
+*.db
+*.sqlite
+*.sqlite3
+
+# 忽略所有本地环境配置文件（保护你的 Turso 密钥）
+.env
+.env.local
+backend/.env

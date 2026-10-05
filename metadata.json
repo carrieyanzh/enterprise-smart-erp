@@ -1,0 +1,6 @@
+{
+  "name": "Enterprise Smart ERP & Finance Dashboard",
+  "description": "High-performance enterprise ERP and finance intelligence platform with real-time cash flow monitoring, stock category volume analytics, and inventory management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
