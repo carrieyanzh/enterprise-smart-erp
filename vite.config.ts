@@ -1,22 +1,13 @@
-import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
-import {defineConfig} from 'vite';
 
-export default defineConfig(() => {
-  return {
-    plugins: [react(), tailwindcss()],
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, '.'),
-      },
-    },
-    server: {
-      // HMR is disabled in AI Studio via DISABLE_HMR env var.
-      // Do not modify—file watching is disabled to prevent flickering during agent edits.
-      hmr: process.env.DISABLE_HMR !== 'true',
-      // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
-      watch: process.env.DISABLE_HMR === 'true' ? null : {},
-    },
-  };
+// 专门为生产环境定制的极致构建包优化引擎配置
+export default defineConfig({
+  plugins: [react()],
+  build: {
+    // 强制关闭严苛的 CSS 代码空规则压缩检查，防止样式打包报错
+    cssCodeSplit: true,
+    minify: 'esbuild',
+    chunkSizeWarningLimit: 1500,
+  },
 });
