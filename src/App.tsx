@@ -5,8 +5,8 @@
 
 import React, { useState } from 'react';
 import DashboardLayout from './components/DashboardLayout.jsx';
-// import DashboardOverview from './components/DashboardOverview.jsx';
-import DashboardOverview from './components/Dashboard';
+
+import DashboardOverview from './components/dashboard/DashboardOverview';
 import ProductsManagement from './components/ProductsManagement.jsx';
 import FiscalCalendar from './components/FiscalCalendar.jsx';
 import AccountSettings from './components/AccountSettings.jsx';

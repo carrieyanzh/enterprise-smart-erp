@@ -5,22 +5,21 @@
     "lib": ["DOM", "DOM.Iterable", "ES2020"],
     "module": "ESNext",
     "skipLibCheck": true,
-
-    /* ❗ 这两行非常关键，能彻底修复 '--jsx' flag missing 报错 */
     "jsx": "react-jsx",
     "moduleResolution": "node",
+    
+    /* ❗ 强效修复 TS1259 default-imported 错误的两行黄金参数 */
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
 
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-
-    /* 豁免静态语法规则检查参数，防止其余测试代码报错 */
     "strict": false,
     "noImplicitAny": false,
     "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "preserveConstEnums": true
+    "noUnusedParameters": false
   },
   "include": ["src"]
 }
