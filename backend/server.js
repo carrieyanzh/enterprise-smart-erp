@@ -18,6 +18,29 @@ async function initDb() {
   try {
     await db.execute("PRAGMA foreign_keys = ON;");
     
+     // 1. Create the Products Table (Needed for low stock subquery)
+    await db.execute(`
+      CREATE TABLE IF NOT EXISTS products (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        sku TEXT UNIQUE NOT NULL,
+        name TEXT NOT NULL,
+        category TEXT NOT NULL,
+        stock_quantity INTEGER NOT NULL DEFAULT 0,
+        low_stock_threshold INTEGER NOT NULL DEFAULT 10
+      );
+    `);
+
+    // 2. Create the Orders Table (Needed for pending orders subquery)
+    await db.execute(`
+      CREATE TABLE IF NOT EXISTS orders (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        order_status TEXT CHECK(order_status IN ('PENDING', 'COMPLETED', 'SHIPPED', 'CANCELLED')) NOT NULL DEFAULT 'PENDING',
+        total_amount REAL NOT NULL,
+        created_at TEXT DEFAULT CURRENT_TIMESTAMP
+      );
+    `);
+
+
     // Automatically create the missing ledger table if it doesn't exist
     await db.execute(`
       CREATE TABLE IF NOT EXISTS financial_ledger (
