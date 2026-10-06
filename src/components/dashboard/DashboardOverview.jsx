@@ -22,7 +22,7 @@ export default function DashboardOverview({ onNavigateToProducts = () => {} }) {
   // 2. Fetch function marked properly with the "async" keyword
   const fetchDashboardTelemetry = async () => {
     try {      
-      const response = await fetch('https://enterprise-smart-erp.onrender.com');
+      const response = await fetch('https://onrender.com');
       if (!response.ok) {
         throw new Error(`Server connection failed: Status ${response.status}`);
       }
