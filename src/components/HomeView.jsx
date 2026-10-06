@@ -11,7 +11,7 @@ export default function HomeView({ onNavigate }) {
             <Building2 className="w-3.5 h-3.5" /> YanTech Enterprise Portal · Production
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Intelligent Enterprise ERP & Liquidity Management
+            Intelligent ERP & Liquidity Management
           </h1>
           <p className="text-sm text-slate-300 leading-relaxed">
             Unified financial telemetry, multi-hub inventory allocation, automated procurement triggers, and real-time cash flow analytics in a single mission-critical dashboard.

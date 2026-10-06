@@ -1,0 +1,66 @@
+[
+  {
+    "id": "revenue",
+    "title": "Total Revenue",
+    "icon": "DollarSign",
+    "variant": "emerald",
+    "value": "$2,845,920",
+    "badge": null,
+    "trend": {
+      "text": "+14.8%",
+      "showArrow": true
+    },
+    "subtext": "vs last period",
+    "footerLeft": "Gross Margin: 34.2%",
+    "footerRight": "ARR $34.1M",
+    "isAlert": false
+  },
+  {
+    "id": "orders",
+    "title": "Sales Orders",
+    "icon": "ShoppingCart",
+    "variant": "indigo",
+    "value": "12,480",
+    "badge": null,
+    "trend": {
+      "text": "+9.4%",
+      "showArrow": true
+    },
+    "subtext": "fulfillment rate 98.6%",
+    "footerLeft": "Avg Value: $228",
+    "footerRight": "312 Pending",
+    "isAlert": false
+  },
+  {
+    "id": "inventory",
+    "title": "Active Inventory",
+    "icon": "Boxes",
+    "variant": "cyan",
+    "value": "184,320",
+    "valueUnit": "Units",
+    "trend": {
+      "text": "6 Regional Hubs",
+      "showArrow": false
+    },
+    "subtext": "· 99.2% available",
+    "footerLeft": "Turnover: 4.8x / yr",
+    "footerRight": "Cap: 82%",
+    "isAlert": false
+  },
+  {
+    "id": "alerts",
+    "title": "Low Stock Alerts",
+    "icon": "AlertTriangle",
+    "variant": "rose",
+    "value": "14",
+    "badge": "Critical Attention",
+    "trend": {
+      "text": "{criticalItemsCount} SKUs Out of Buffer",
+      "showArrow": false
+    },
+    "subtext": "· 9 Approaching Min",
+    "footerLeft": "Avg Lead: 4.2 Days",
+    "footerRight": "Auto-PO Ready",
+    "isAlert": true
+  }
+]

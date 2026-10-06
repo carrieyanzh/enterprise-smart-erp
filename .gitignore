@@ -16,3 +16,5 @@ coverage/
 .env
 .env.local
 backend/.env
+.env.development
+.env.production

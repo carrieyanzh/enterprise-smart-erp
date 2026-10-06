@@ -35,7 +35,7 @@ export default function StockVolumeChart({ stockCategoryData, onNavigateToProduc
           <h2 className="text-base font-semibold text-white">Stock Category Volume</h2>
           <p className="text-xs text-slate-400 mt-0.5">Current volume vs safety replenishment levels (k Units)</p>
         </div>
-        <span className="text-[11px] font-mono text-slate-400">Total: \$4.46M</span>
+        <span className="text-[11px] font-mono text-slate-400">Total: $4.46M</span>
       </div>
 
       <div className="h-72 w-full pt-2">

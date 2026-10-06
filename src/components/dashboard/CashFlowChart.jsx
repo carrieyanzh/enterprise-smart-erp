@@ -64,14 +64,17 @@ export default function CashFlowChart({ chartData = [] }) {
                 <stop offset="95%" stopColor="#6366f1" stopOpacity={0}/>
               </linearGradient>
             </defs>
+
             <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false} />
             <XAxis dataKey="date" stroke="#64748b" tickLine={false} axisLine={false} />
+
             <YAxis 
               stroke="#64748b" 
               tickLine={false} 
               axisLine={false}
               tickFormatter={(v) => `$${v >= 1000000 ? (v/1000000).toFixed(1) + 'M' : (v/1000).toFixed(0) + 'k'}`}
             />
+            
             <Tooltip content={<CustomTooltip />} />
             <Area type="monotone" dataKey="inflow" stroke="#10b981" strokeWidth={2} fillOpacity={1} fill="url(#colorInflow)" />
             <Area type="monotone" dataKey="outflow" stroke="#ef4444" strokeWidth={2} strokeDasharray="4 4" fillOpacity={1} fill="url(#colorOutflow)" />

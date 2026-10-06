@@ -19,10 +19,10 @@ export default function TransactionModal({ isOpen, onClose, onTransactionAdded }
     setIsSubmitting(true);
     setErrorMessage(null);
 
-    try {
-      
-       const response = await fetch('https://enterprise-smart-erp.onrender.com/api/financial-ledger', { 
+    try {        
+    const baseUrl = import.meta.env.VITE_API_BASE_URL || "https://enterprise-smart-erp.onrender.com/api";         
     
+    const response = await fetch('{baseUrl}/financial-ledger', { 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...formData, recorded_by_user_id: 1 }) // Defaults to Admin account audit key
