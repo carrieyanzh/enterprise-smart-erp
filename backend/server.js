@@ -17,11 +17,26 @@ const db = createClient({
 async function initDb() {
   try {
     await db.execute("PRAGMA foreign_keys = ON;");
-    console.log("Successfully connected to erp_system.db (Pure JS Driver)");
+    
+    // Automatically create the missing ledger table if it doesn't exist
+    await db.execute(`
+      CREATE TABLE IF NOT EXISTS financial_ledger (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        transaction_ref TEXT UNIQUE NOT NULL,
+        type TEXT CHECK(type IN ('REVENUE', 'EXPENSE')) NOT NULL,
+        category TEXT NOT NULL,
+        amount REAL NOT NULL,
+        description TEXT,
+        recorded_by_user_id INTEGER DEFAULT 1
+      );
+    `);
+    
+    console.log("Successfully connected to erp_system.db and verified schemas.");
   } catch (err) {
     console.error("Database initialization error:", err.message);
   }
 }
+
 initDb();
 
 // --- 1. LIVE METRICS API ENDPOINT ---
