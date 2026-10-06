@@ -7,11 +7,13 @@
     "skipLibCheck": true,
     "jsx": "react-jsx",
     "moduleResolution": "node",
-        
+    
+    /* 核心配置：这两行配置允许 TS 顺利导入你的本地 json 数据 */
+    "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     
-    "resolveJsonModule": true,
+    /* 宽松检测：防止第三方库或未定义类型阻碍 Vercel 生产打包 */
     "isolatedModules": true,
     "noEmit": true,
     "strict": false,

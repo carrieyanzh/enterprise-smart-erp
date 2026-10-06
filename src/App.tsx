@@ -14,7 +14,7 @@ import AboutView from "./components/AboutView.jsx";
 
 import HomeView from "./components/HomeView.jsx";
 import LogoutModal from "./components/LogoutModal";
-
+import events from "./data/events.json"; // Make sure path points correctly to your JSON file
 
 export default function App() {
   const [activeItem, setActiveItem] = useState("dashboard");
