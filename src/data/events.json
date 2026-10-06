@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "date": "Oct 08, 2026",
+    "time": "09:00 AM EST",
+    "title": "Q4 Global Supplier Ingot Shipment (Maersk Line)",
+    "type": "Logistics",
+    "tag": "Shipping",
+    "color": "border-cyan-500/30 bg-cyan-500/10 text-cyan-300"
+  },
+  {
+    "id": 2,
+    "date": "Oct 15, 2026",
+    "time": "05:00 PM EST",
+    "title": "Corporate Federal Tax Filing & VAT Reconciliation",
+    "type": "Finance",
+    "tag": "Compliance",
+    "color": "border-amber-500/30 bg-amber-500/10 text-amber-300"
+  },
+  {
+    "id": 3,
+    "date": "Oct 22, 2026",
+    "time": "11:30 AM EST",
+    "title": "Bi-Weekly Global Payroll & Treasury Run ($1.42M)",
+    "type": "Payroll",
+    "tag": "Treasury",
+    "color": "border-emerald-500/30 bg-emerald-500/10 text-emerald-300"
+  },
+  {
+    "id": 4,
+    "date": "Oct 28, 2026",
+    "time": "02:00 PM EST",
+    "title": "Warehouse Automated Inventory Cycle Audit (Austin Hub)",
+    "type": "Operations",
+    "tag": "Audit",
+    "color": "border-indigo-500/30 bg-indigo-500/10 text-indigo-300"
+  }
+]

@@ -7,12 +7,10 @@
     "skipLibCheck": true,
     "jsx": "react-jsx",
     "moduleResolution": "node",
-    
-    /* ❗ 强效修复 TS1259 default-imported 错误的两行黄金参数 */
+        
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-
-    "allowImportingTsExtensions": true,
+    
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,

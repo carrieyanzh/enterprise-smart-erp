@@ -1,13 +1,23 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig, loadEnv } from 'vite'
+import react from '@vitejs/plugin-react'
 
-// 专门为生产环境定制的极致构建包优化引擎配置
-export default defineConfig({
-  plugins: [react()],
-  build: {
-    // 强制关闭严苛的 CSS 代码空规则压缩检查，防止样式打包报错
-    cssCodeSplit: true,
-    minify: 'esbuild',
-    chunkSizeWarningLimit: 1500,
-  },
-});
+// You must use an arrow function here so Vite can pass the 'mode' argument
+export default defineConfig(({ mode }) => {
+  
+  // This line safely creates the 'env' variable
+  const env = loadEnv(mode, process.cwd(), '') 
+  
+  return {
+    plugins: [react()],
+    server: {
+      proxy: {
+        '/api': {
+          // Now env.BACKEND_URL will be safely read from your .env.local file
+          target: env.BACKEND_URL || 'http://localhost:5000', 
+          changeOrigin: true,
+          secure: false,
+        },
+      },
+    },
+  }
+})

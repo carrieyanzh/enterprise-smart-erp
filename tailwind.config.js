@@ -2,7 +2,7 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}", // ❗ 必须强力确保这行规则存在！它会扫描你 src 下所有子文件夹里的组件文件
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {

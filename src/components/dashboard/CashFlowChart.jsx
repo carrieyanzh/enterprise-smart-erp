@@ -2,7 +2,7 @@ import React from 'react';
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 export default function CashFlowChart({ chartData = [] }) {
-  // Custom interactive tooltip dashboard layout styling metrics
+  
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (

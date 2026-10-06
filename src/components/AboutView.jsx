@@ -1,13 +1,24 @@
-import React from 'react';
-import { Building2, Server, Cpu, ShieldCheck, Database, Layers, CheckCircle2 } from 'lucide-react';
+import React from "react";
+import {
+  Building2,
+  Server,
+  Cpu,
+  ShieldCheck,
+  Database,
+  Layers,
+  CheckCircle2,
+} from "lucide-react";
 
 export default function AboutView() {
   return (
-    <div className="space-y-6 max-w-4xl mx-auto">
-      <div className="pb-1 border-b border-slate-800/80">
-        <h1 className="text-2xl font-bold tracking-tight text-white">System Architecture & ERP Core</h1>
+    <div className="space-y-6 max-w-4xl border border-white/100">
+      <div className="pt-8 pl-8 pb-1 border-b border-slate-800/80">
+        <h1 className="text-2xl font-bold tracking-tight text-white">
+          System Architecture & ERP Core
+        </h1>
         <p className="text-xs text-slate-400 mt-1">
-          Technical specifications, compliance attestations, and active microservices cluster topography.
+          Technical specifications, compliance attestations, and active
+          microservices cluster topography.
         </p>
       </div>
 
@@ -17,14 +28,20 @@ export default function AboutView() {
             <Building2 className="w-6 h-6" />
           </div>
           <div>
-            <h2 className="text-lg font-bold text-white">Nexus Enterprise ERP Suite</h2>
-            <p className="text-xs text-slate-400">Release Version 4.8.2-Enterprise · High-Throughput Engine</p>
+            <h2 className="text-lg font-bold text-white">
+              YanTech Enterprise ERP Suite
+            </h2>
+            <p className="text-xs text-slate-400">
+              Release Version 4.8.2-Enterprise · High-Throughput Engine
+            </p>
           </div>
         </div>
 
         <p className="text-xs text-slate-300 leading-relaxed">
-          Designed for global manufacturing, electronics supply chains, and multinational treasury management.
-          Combines sub-second double-entry accounting reconciliation with predictive warehouse replenishment and real-time inventory telemetry.
+          Designed for global manufacturing, electronics supply chains, and
+          multinational treasury management. Combines sub-second double-entry
+          accounting reconciliation with predictive warehouse replenishment and
+          real-time inventory telemetry.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
@@ -33,7 +50,8 @@ export default function AboutView() {
               <Server className="w-4 h-4" /> Multi-Region High Availability
             </div>
             <p className="text-[11px] text-slate-400">
-              Active-active cluster replication across US-East, US-West, and EU-Central with zero-downtime failover.
+              Active-active cluster replication across US-East, US-West, and
+              EU-Central with zero-downtime failover.
             </p>
           </div>
 
@@ -42,7 +60,8 @@ export default function AboutView() {
               <Cpu className="w-4 h-4" /> Real-time Analytics Engine
             </div>
             <p className="text-[11px] text-slate-400">
-              Integrated streaming analytics for instant cash-flow forecasting and automatic safety threshold alerts.
+              Integrated streaming analytics for instant cash-flow forecasting
+              and automatic safety threshold alerts.
             </p>
           </div>
 
@@ -51,7 +70,8 @@ export default function AboutView() {
               <ShieldCheck className="w-4 h-4" /> SOC2 Type II & ISO 27001
             </div>
             <p className="text-[11px] text-slate-400">
-              End-to-end cryptographic audit trails with tamper-proof event ledgers and hardware-enforced 2FA.
+              End-to-end cryptographic audit trails with tamper-proof event
+              ledgers and hardware-enforced 2FA.
             </p>
           </div>
 
@@ -60,7 +80,8 @@ export default function AboutView() {
               <Database className="w-4 h-4" /> Stock & Supply Orchestration
             </div>
             <p className="text-[11px] text-slate-400">
-              Direct EDI / API integration with logistics carriers including Maersk, FedEx Cargo, and regional 3PLs.
+              Direct EDI / API integration with logistics carriers including
+              Maersk, FedEx Cargo, and regional 3PLs.
             </p>
           </div>
         </div>

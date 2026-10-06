@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import { createClient } from '@libsql/client';
-import 'dotenv/config'; // 让系统自动加载 .env 配置文件里的密钥
+import 'dotenv/config';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -9,16 +9,18 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Connect to your local SQLite database file assets
+const DB_URL = "file:erp_system.db"; 
+
 const db = createClient({
-  url: "file:erp_system.db",
+  url: DB_URL,
+  authToken: DB_URL.startsWith('file:') ? undefined : process.env.TURSO_AUTH_TOKEN
 });
+
 
 async function initDb() {
   try {
-    await db.execute("PRAGMA foreign_keys = ON;");
-    
-     // 1. Create the Products Table (Needed for low stock subquery)
+    await db.execute("PRAGMA foreign_keys = ON;");   
+
     await db.execute(`
       CREATE TABLE IF NOT EXISTS products (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -29,8 +31,7 @@ async function initDb() {
         low_stock_threshold INTEGER NOT NULL DEFAULT 10
       );
     `);
-
-    // 2. Create the Orders Table (Needed for pending orders subquery)
+    
     await db.execute(`
       CREATE TABLE IF NOT EXISTS orders (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -40,8 +41,6 @@ async function initDb() {
       );
     `);
 
-
-    // Automatically create the missing ledger table if it doesn't exist
     await db.execute(`
       CREATE TABLE IF NOT EXISTS financial_ledger (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -59,10 +58,8 @@ async function initDb() {
     console.error("Database initialization error:", err.message);
   }
 }
-
 initDb();
 
-// --- 1. LIVE METRICS API ENDPOINT ---
 app.get('/api/dashboard/metrics', async (req, res) => {
   const dashboardQuery = `
     SELECT 
@@ -72,24 +69,19 @@ app.get('/api/dashboard/metrics', async (req, res) => {
   `;
 
   try {
-    const result = await db.execute(dashboardQuery);
-    
-    // Libsql safe array item row destructuring extraction parsing logic
+    const result = await db.execute(dashboardQuery);    
     const row = result.rows && result.rows.length > 0 ? result.rows[0] : {};
 
     const rev = parseFloat(row.rawRevenue || 0);
     const exp = parseFloat(row.rawExpenses || 0);
     const net = rev - exp;
     
-    // Calculate margin percent inside JavaScript safely
     const marginCalc = rev > 0 ? Number(((net / rev) * 100).toFixed(2)) : 0;
     const profitMargin = marginCalc + '%';
-
-    // Safe extraction fallback sequences for subordinate tables
+    
     const pendingOrdersResult = await db.execute("SELECT COUNT(*) as cnt FROM orders WHERE order_status = 'PENDING';");
     const lowStockResult = await db.execute("SELECT COUNT(*) as cnt FROM products WHERE stock_quantity <= low_stock_threshold;");
-
-    // Correctly target index array object elements returned by the client
+    
     const pendingOrdersCount = Number(pendingOrdersResult.rows && pendingOrdersResult.rows.length > 0 ? pendingOrdersResult.rows[0].cnt : 0);
     const lowStockAlerts = Number(lowStockResult.rows && lowStockResult.rows.length > 0 ? lowStockResult.rows[0].cnt : 0);
 
@@ -138,7 +130,6 @@ app.get('/api/dashboard/metrics', async (req, res) => {
   }
 });
 
-// --- 2. POST LEDGER DATA ROUTE ---
 app.post('/api/financial-ledger', async (req, res) => {
   const { transaction_ref, type, category, amount, description } = req.body;
 

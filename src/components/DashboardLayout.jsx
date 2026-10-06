@@ -1,8 +1,7 @@
 // 1. Add the import line near the top of DashboardLayout.tsx:
-import Sidebar from './Sidebar'; // Update file path to your exact destination
+import Sidebar from "./Sidebar"; // Update file path to your exact destination
 
-
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   LayoutDashboard,
   Package,
@@ -23,8 +22,8 @@ import {
   SlidersHorizontal,
   CheckCircle2,
   ExternalLink,
-  Sparkles
-} from 'lucide-react';
+  Sparkles,
+} from "lucide-react";
 
 /**
  * @param {Object} props
@@ -36,10 +35,10 @@ import {
  */
 export default function DashboardLayout({
   children,
-  activeItem = 'dashboard',
-  onNavigate = (_itemId = '') => {},
-  currentTopMenu = 'Dashboard',
-  onTopMenuChange = (_menuId = '') => {}
+  activeItem = "dashboard",
+  onNavigate = (_itemId = "") => {},
+  currentTopMenu = "Dashboard",
+  onTopMenuChange = (_menuId = "") => {},
 }) {
   // Mobile sidebar toggle
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -54,7 +53,7 @@ export default function DashboardLayout({
   // Top header states
   const [showNotifications, setShowNotifications] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
 
   const toggleSection = (sectionKey) => {
     setOpenSections((prev) => ({
@@ -64,31 +63,31 @@ export default function DashboardLayout({
   };
 
   const topMenuItems = [
-    { id: 'Home', label: 'Home' },
-    { id: 'About', label: 'About' },
-    { id: 'Dashboard', label: 'Dashboard' },
+    { id: "Home", label: "Home" },
+    { id: "About", label: "About" },
+    { id: "Dashboard", label: "Dashboard" },
   ];
 
   const sampleNotifications = [
     {
       id: 1,
-      title: 'Critical Stock Alert',
-      desc: 'Microchip SKU #MC-8092 dropped below safety threshold (84 units left).',
-      time: '12m ago',
+      title: "Critical Stock Alert",
+      desc: "Microchip SKU #MC-8092 dropped below safety threshold (84 units left).",
+      time: "12m ago",
       urgent: true,
     },
     {
       id: 2,
-      title: 'Inflow Reconciled',
-      desc: 'Wire transfer \$182,450.00 from Apex Corp verified by Treasury.',
-      time: '45m ago',
+      title: "Inflow Reconciled",
+      desc: "Wire transfer \$182,450.00 from Apex Corp verified by Treasury.",
+      time: "45m ago",
       urgent: false,
     },
     {
       id: 3,
-      title: 'PO #4928 Dispatched',
-      desc: 'Logistics confirmed batch #B-104 en route to Chicago Hub.',
-      time: '2h ago',
+      title: "PO #4928 Dispatched",
+      desc: "Logistics confirmed batch #B-104 en route to Chicago Hub.",
+      time: "2h ago",
       urgent: false,
     },
   ];
@@ -111,13 +110,17 @@ export default function DashboardLayout({
               className="lg:hidden p-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               aria-label="Toggle Navigation Menu"
             >
-              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
             </button>
 
             <div
               onClick={() => {
-                onTopMenuChange('Dashboard');
-                onNavigate('dashboard');
+                onTopMenuChange("Dashboard");
+                onNavigate("dashboard");
               }}
               className="flex items-center gap-3 cursor-pointer group"
             >
@@ -126,7 +129,7 @@ export default function DashboardLayout({
               </div>
               <div className="flex flex-col">
                 <span className="text-base font-semibold tracking-tight text-white flex items-center gap-1.5">
-                  Nexus<span className="text-indigo-400">ERP</span>
+                  YanTech<span className="text-indigo-400">ERP</span>
                   <span className="text-[1px] font-mono uppercase tracking-wider text-slate-400 bg-slate-800/80 px-1.5 py-0.5 rounded border border-slate-700/60">
                     Enterprise
                   </span>
@@ -140,25 +143,24 @@ export default function DashboardLayout({
 
           {/* Right actions: Combined Nav Menu, Search, Notification, Profile */}
           <div className="flex items-center gap-4 sm:gap-6">
-            
-            {/* Main Navigation Menu (Moved near search bar, upgraded font to text-sm) */}          
+            {/* Main Navigation Menu (Moved near search bar, upgraded font to text-sm) */}
             <nav className="hidden md:flex items-center gap-1 rounded-xl bg-slate-950/40 p-1 border border-slate-800/80 shadow-inner">
               {topMenuItems.map((item) => {
                 const isActive = currentTopMenu === item.id;
                 return (
-                  <button 
-                    key={item.id} 
-                    type="button" 
+                  <button
+                    key={item.id}
+                    type="button"
                     onClick={() => {
                       onTopMenuChange(item.id);
-                      if (item.id === 'Dashboard') {
-                        onNavigate('dashboard');
+                      if (item.id === "Dashboard") {
+                        onNavigate("dashboard");
                       }
                     }}
                     className={`px-4 py-1.5 text-sm font-medium rounded-lg transition-all ${
                       isActive
-                        ? 'bg-indigo-600 text-white shadow-sm shadow-indigo-500/30 font-semibold'
-                        : 'text-slate-300 hover:text-white hover:bg-slate-800/70'
+                        ? "bg-indigo-600 text-white shadow-sm shadow-indigo-500/30 font-semibold"
+                        : "text-slate-300 hover:text-white hover:bg-slate-800/70"
                     }`}
                   >
                     {item.label}
@@ -200,38 +202,32 @@ export default function DashboardLayout({
                 </span>
               </button>
             </div>
-
           </div>
         </div>
       </header>
 
-      {/* Main Workspace Frame */}
-      {/* <div className="flex-1 w-full max-w-[1600px] mx-auto p-4 sm:p-6 lg:p-8">         */}
-        <div className="flex flex-1 min-h-0 w-full">
-        <main className="w-full h-full min-h-[calc(100vh-12rem)] bg-slate-950/40 rounded-2xl border border-slate-800/80 pl-8 pr-6 py-6 shadow-xl backdrop-blur-sm flex gap-6">
- 
+     {/* Main Workspace Frame */}
+      {/* 1. 核心修正：在外层包裹层添加 overflow-hidden，切断全局视口溢出，锁定在屏幕内部 */}
+      <div className="flex flex-1 min-h-0 w-full overflow-hidden">
+        
+        {/* 2. 核心修正：彻底删除了冲突的 w-[calc(...)] 宽度，改用 max-w-full 控制！
+            添加了 min-h-0 和 overflow-x-hidden，防止子元素把整个大盒子横向撑爆顶出屏幕 */}
+        <main className="flex-1 min-w-0 max-w-full h-[calc(100vh-4rem)] overflow-y-auto overflow-x-hidden bg-slate-950/40 rounded-2xl border border-slate-800/80 p-6 pb-24 shadow-xl backdrop-blur-sm flex gap-6">
           {/* INSERT NEW SIDEBAR HERE */}
-          <Sidebar 
+          <Sidebar
             activeItem={activeItem}
             onNavigate={handleNavClick}
             openSections={openSections}
             toggleSection={toggleSection}
-          />  
+          />
 
           {/* RIGHT SIDE MAIN DASHBOARD FEED DATA */}
-          <div className="flex-1 overflow-x-hidden text-slate-300">
+          {/* 3. 核心修正：添加 pr-4 确保在主渲染区域右侧留出一道绝对的安全壕沟空间 */}
+          <div className="flex-1 min-w-0 text-slate-300 pr-4 pb-12">
             {children}
-          </div>                  
+          </div>
         </main>
-        
       </div>
-      
-    
-    
-    
     </div>
-
-
-
   );
 }

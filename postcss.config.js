@@ -1,6 +1,6 @@
 export default {
   plugins: {
-    '@tailwindcss/postcss': {}, // ❗ 完美替换掉之前会报错的旧版 'tailwindcss'，锁定新版集成桥接器
-    'autoprefixer': {},
+    '@tailwindcss/postcss': {}, //for latest version 
+    'autoprefixer': {},  // 启用自动补全浏览器前缀插件
   },
 };
