@@ -21,7 +21,7 @@ export default function TransactionModal({ isOpen, onClose, onTransactionAdded }
 
     try {
       
-      const response = await fetch('https://onrender.com', {
+      const response = await fetch('https://enterprise-smart-erp.onrender.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...formData, recorded_by_user_id: 1 }) // Defaults to Admin account audit key

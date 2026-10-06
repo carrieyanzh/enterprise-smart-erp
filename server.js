@@ -5,7 +5,18 @@ import { createClient } from '@libsql/client';
 const app = express();
 const PORT = 5000;
 
-app.use(cors());
+/* app.use(cors()); */
+// Replace app.use(cors()); with this:
+app.use(cors({
+  origin: [
+    'http://localhost:5175', 
+    'https://enterprise-smart-erp.vercel.app' // Your exact Vercel frontend URL
+  ],
+  credentials: true
+}));
+
+
+
 app.use(express.json()); // <-- Crucial: enables reading JSON payloads sent from the frontend
 
 const db = createClient({
